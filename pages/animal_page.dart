@@ -35,16 +35,16 @@ class AnimalPage extends StatelessWidget {
     Animal(
       name: 'Burung Hantu',
       desc: 'Hewan malam dengan penglihatan tajam.',
-      weight: 2,
+      weight: 8,
       image:
-          'https://upload.wikimedia.org/wikipedia/commons/5/5c/Western_Screech_Owl.jpg',
+          'https://th.bing.com/th/id/OIP.5LijE6EFhjn2exJynIdcYwHaGI?rs=1&pid=ImgDetMain',
     ),
     Animal(
       name: 'Ikan Paus',
       desc: 'Mamalia laut terbesar di dunia.',
-      weight: 30000,
+      weight: 8,
       image:
-          'https://upload.wikimedia.org/wikipedia/commons/4/4e/Bluewhale_with_calf.jpg',
+          'https://th.bing.com/th/id/OIP.hYKG5dkJiYPiBEw7Z3RU-QHaE7?rs=1&pid=ImgDetMain',
     ),
     Animal(
       name: 'Anjing',
@@ -76,32 +76,44 @@ class AnimalPage extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
             ),
-            child: ListTile(
-              leading: ClipRRect(
-                borderRadius: BorderRadius.circular(8),
-                child: Image.network(
-                  animal.image,
-                  width: 60,
-                  height: 60,
-                  fit: BoxFit.cover,
-                  errorBuilder:
-                      (context, error, stackTrace) =>
-                          Icon(Icons.image_not_supported),
-                ),
-              ),
-              title: Text(
-                animal.name,
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-              ),
-              subtitle: Column(
+            child: Padding(
+              padding: EdgeInsets.all(12),
+              child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(animal.desc),
-                  SizedBox(height: 4),
-                  Text('Berat: ${animal.weight} kg'),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(8),
+                    child: Image.network(
+                      animal.image,
+                      width: 80,
+                      height: 80,
+                      fit: BoxFit.cover,
+                      errorBuilder:
+                          (context, error, stackTrace) =>
+                              Icon(Icons.image_not_supported, size: 60),
+                    ),
+                  ),
+                  SizedBox(width: 12),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          animal.name,
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(height: 4),
+                        Text(animal.desc),
+                        SizedBox(height: 4),
+                        Text('Berat: ${animal.weight} kg'),
+                      ],
+                    ),
+                  ),
                 ],
               ),
-              isThreeLine: true,
             ),
           );
         },

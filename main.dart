@@ -1,6 +1,8 @@
+import 'package:auth_supabase/animals/animal.dart';
 import 'package:auth_supabase/pages/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:auth_supabase/pages/animal_page.dart';
 
 void main() async {
   await Supabase.initialize(
